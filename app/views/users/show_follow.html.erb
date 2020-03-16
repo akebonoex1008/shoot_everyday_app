@@ -1,8 +1,5 @@
-<% @user.following.each do |user| %>
-  <table>
-    <tr>
-      <td>  <%= user.email %> </td>
-      <td><%= link_to '詳細', user_path(user) %></td>
-    </tr>
-  </table>
-<% end %>
+<% provide(:title, 'follow') %>
+<h1>フォロー中ユーザーの一覧</h1>
+<div class="container">
+    <%= render 'partial/show_users' %>
+</div>

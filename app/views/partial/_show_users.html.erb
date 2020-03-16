@@ -1,0 +1,23 @@
+<div class="col-md-12">
+    <div class="show-users"> 
+        <ul class="col-md-12">
+            <% @users.each do |user| %>
+                <li>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <span class="align-middle">
+                                <img src="assets/default.png">
+                            </span>
+                        </div>
+                        <div class="col-md-8">
+                            <span class="align-middle">
+                                <%= link_to user.name, user %>
+                            </span>
+                        </div>
+                    </div>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+    <%= paginate @users %>
+</div>
