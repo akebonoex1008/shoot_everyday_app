@@ -22,6 +22,7 @@ textarea {
 
 .center {
   text-align: center;
+  margin: 10px auto;
   h1 {
     margin-bottom: 10px;
   }
@@ -106,12 +107,37 @@ footer {
   }
 }
 
-/* container */
-
-.container {
-    // width: 1170px;
-    // padding: 0 15px;
-    // margin: 0 auto;
+/*  sign up, login, edit  */
+.sign_up_box, .login_box, .edit-box {
+    width: 400px;
+    height: auto;
+    margin: 0 auto;
+    // background-color: red;
+    input[type='text'], input[type='email'], input[type='password'] {
+        font: 15px/24px sans-serif;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0.3em;
+        margin: 10px 0;
+        letter-spacing: 1px;
+        color: #0f0f0f;
+        border: none;
+        border-bottom: 2px solid #aaaaaa;
+        // background: transparent;
+    }
+    input[type='submit'] {
+        margin: 5px auto;
+        display: block;
+        font-size: 15px;
+    }
+    input:focus {
+        outline: none;
+    }
+    .account-delete-btn {
+        padding-top: 20px;
+        color: red;
+        border: none;
+    }
 }
 
 /* show users */
@@ -126,39 +152,59 @@ footer {
     li {
         min-width: 500px;
         height: 120px;
-        overflow: auto;
-        margin: 10px 30px;
+        margin: 10px 0;
         border-bottom: 1px solid $gray-lighter;
         background-color: lightgray;
         border-radius: 10px;
-        font-size: 16px;
         img {
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
             border-radius: 50%;
+            margin: 20px auto;
+            display: block;
+        }
+        p {
+            padding-top: 40px;
+            font-size: 20px;
         }
     }
   }
 }
 
 .sidebar {
-    text-align: center;
-    // width: 220px;
     height: auto;
     background-color: #009b9f;
     ul {
+        background-color: yellow;
         list-style: none;
+        margin: 0px;
+        padding: 0px;
         li {
+            background-color: red;
+            text-align: center;
             padding-top: 15px;
             height: 50px;
             border-top: solid 1px #000;
         }
     }
+    img {
+        background-color: blue;
+        width: 130px;
+        height: 130px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin: 20px auto;
+        display: block;
+    }
+    p {
+        background-color: green;
+        font-size: 20px;
+        text-align: center;
+    }
 }
 
-.circle {
-    width:  180px;
-    height: 180px;
+.profile-image {
     border-radius: 50%;
-    background-size: 200px;
+    object-fit: cover;
 }

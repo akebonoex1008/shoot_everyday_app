@@ -4,15 +4,14 @@
             <% @users.each do |user| %>
                 <li>
                     <div class="row">
-                        <div class="col-md-4">
-                            <span class="align-middle">
-                                <img src="assets/default.png">
-                            </span>
+                        <div class="col-md-2">
+                            <%= image_tag 'default.png' %>
                         </div>
-                        <div class="col-md-8">
-                            <span class="align-middle">
-                                <%= link_to user.name, user %>
-                            </span>
+                        <div class="col-md-4 mx-auto">
+                            <p><%= link_to user.name, user %></p>
+                        </div>
+                        <div class="col-md-4">
+                            <p>投降した画像一覧</p>
                         </div>
                     </div>
                 </li>
