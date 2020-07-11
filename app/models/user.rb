@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  mount_uploader :profile_image, ImgUploader
   before_save{ email.downcase! }
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
@@ -17,6 +18,7 @@ class User < ApplicationRecord
                                    dependent:   :destroy
   has_many :following, through: :active_relationships,  source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
+  has_many :posts, dependent: :destroy
 
   # ユーザーをフォローする
   def follow(other_user)
