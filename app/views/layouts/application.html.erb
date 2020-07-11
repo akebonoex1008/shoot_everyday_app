@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Myapp</title>
-    <%= render 'partial/rails_dafault' %>
-    <%= render 'partial/shim' %>
+    <title><%= full_title(yield(:title)) %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= render 'shared/rails_dafault' %>
+    <%= render 'shared/shim' %>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   </head>
 
   <body>
-    <%= render 'partial/header' %>
+    <%= render 'shared/header' %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
-    <%= render 'partial/footer' %>
+    <%= render 'shared/footer' %>
+    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>

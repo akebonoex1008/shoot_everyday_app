@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root to: 'home#index'
   devise_for :users, :controllers => {
     :sessions      => "users/sessions",
@@ -6,7 +7,6 @@ Rails.application.routes.draw do
     :passwords     => "users/passwords"
   }
 
-  get '/show', to: 'home#show'
   resources :users, :only => [:index, :show] do
     member do
       get :following, :followers
@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   end
 
   resources :relationships, only: [:create, :destroy]
+  resources :posts
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

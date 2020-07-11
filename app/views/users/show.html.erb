@@ -1,34 +1,22 @@
 <% provide(:title, @user.name) %>
-<div class="container">
-    <div class="row">
-        <div class="col-md-4 sidebar">
-            <%= image_tag 'default.png' %>
-            <p><%= @user.name %></p>
-            <div class="center">
-                <%= render 'partial/follow_form' %>
-            </div>
-            <ul>
-                <li>
-                    <a href="<%= following_user_path(@user) %>">
-                        <strong id="following" class="stat">
-                        <%= @user.following.count %>
-                        </strong>
-                        フォロー中のユーザー
-                    </a>    
-                </li>
-                <li>
-                    <a href="<%= followers_user_path(@user) %>">
-                        <strong id="followers" class="stat">
-                        <%= @user.followers.count %>
-                        </strong>
-                        フォローしてくれたユーザー
-                    </a>
-                </li>
-                <li>いいねした投稿一覧</li>
-            </ul>
-        </div>
-        <div class="col-md-8">
-            <p>投稿一覧</p>
-        </div>
-    </div>
+<div class="user-profile tac">
+	<div class="user-img">
+		<%= image_tag @user.profile_image.url %>
+	</div>
+	<p><%= @user.name %></p>
+	<%= render 'shared/follow_form', user: @user %>
+	<a href="<%= following_user_path(@user) %>">
+		<strong id="following" class="stat">
+		<%= @user.following.count %>
+		</strong>
+		フォロー中
+	</a>    
+	<a href="<%= followers_user_path(@user) %>">
+		<strong id="followers" class="stat">
+		<%= @user.followers.count %>
+		</strong>
+		フォロワー
+	</a>
 </div>
+<%= render 'shared/show_posts' %>
+<%= javascript_include_tag 'modal.js' %>
