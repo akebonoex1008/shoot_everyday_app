@@ -1,0 +1,9 @@
+<% unless current_user?(post.user) %>
+  <span id="like_form-<%= post.id %>">
+    <% if post.like?(current_user) %>
+      <%= render 'likes/unlike', post: post %>
+    <% else %>
+		  <%= render 'likes/like', post: post%>
+    <% end %>
+  </span>
+<% end %>
