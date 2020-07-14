@@ -4,7 +4,7 @@
 		<%= image_tag @user.profile_image.url %>
 	</div>
 	<p><%= @user.name %></p>
-	<%= render 'shared/follow_form', user: @user %>
+	<%= render 'follow_form', user: @user %>
 	<a href="<%= following_user_path(@user) %>">
 		<strong id="following" class="stat">
 		<%= @user.following.count %>
@@ -12,11 +12,11 @@
 		フォロー中
 	</a>    
 	<a href="<%= followers_user_path(@user) %>">
-		<strong id="followers" class="stat">
+		<strong class="stat followers">
 		<%= @user.followers.count %>
 		</strong>
 		フォロワー
 	</a>
 </div>
-<%= render 'shared/show_posts' %>
+<%= render 'posts/posts_list' %>
 <%= javascript_include_tag 'modal.js' %>

@@ -6,7 +6,9 @@
 					<li>
 						<a class="js-modal-open" href="" data-target="modal-<%= post.id %>">
 							<%= image_tag post.img.url %>
-							<i class="fas fa-heart like-icon"> </i>
+							<i class="fas fa-heart like-icon">
+								<span class="like_count-<%= post.id %>"><%= post.likes.count %></span>
+							</i>
 							<i class="fas fa-comment comment-icon"> </i>
 						</a>
 					</li>
@@ -23,7 +25,8 @@
 							<div class="reader-of-ui">
 								<div class="icon_ui">
 									<%# <i class="fas fa-heart"></i> %>
-									<%= render 'shared/like_form', post: post %>
+									<%= render 'likes/like_form', post: post %>
+									<span class="like_count-<%= post.id %>"><%= post.likes.count %></span>
 								</div>
 								<div class="border__line"></div>
 								<div class="post-user-profile">
@@ -34,10 +37,12 @@
 											</td>
 											<td class="post-user-name-and-follower">
 												<h4><%= post.user.name %></h4>
-												<p>フォロワー　<%= post.user.followers.count %></p>
-											</td>
-											<td class="post-user-follow-form">
-												<%= render 'shared/follow_form', user: post.user %>
+												<p>
+													<strong class="followers">
+														<%= @user.followers.count %>
+													</strong>
+													フォロワー
+												</p>
 											</td>
 										</tr>
 									</table>
