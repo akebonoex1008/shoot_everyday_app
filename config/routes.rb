@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
 
   resources :relationships, only: [:create, :destroy]
-  resources :posts
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :posts, only: [:index, :new, :create, :destroy]
+  resources :likes, only: [:create, :destroy]
+
 end
