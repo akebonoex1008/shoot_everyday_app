@@ -3,33 +3,32 @@
  <div class="post-box">
     <%= form_for(@post) do |f| %>
 
-        <div class="field">
-            <%= f.text_field :title, autofocus: true, autocomplete: "title", placeholder: "title" %>
-        </div>
-        <div class="margin-center">
-            <p class="tac">写真を選択</p>
-            <div onClick="$('#file').click()">    
-                <label class="tac outer">
-                    <div id="img_field" >
-                        <% if @post.img? %>
-                            <p><%= @post.img.url %></p>
-                            <%= image_tag(@post.img.url) %>
-                        <% else %>
-                            <i class="fas fa-image"></i><i class="fas fa-file-upload add"></i>
-                        <% end %>
-                    </div>
-                    <%= f.file_field :img, class: "image", style: "display:none;", id: "file" %>
-                </label>
-            </div>
-        </div>
-        <div class="field">
-            <%= f.text_area :text, placeholder: "コメント", class: "comment_form" %>
-        </div>
+			<div class="field">
+					<%= f.text_field :title, autofocus: true, autocomplete: "title", placeholder: "title" %>
+			</div>
+			<div class="margin-center">
+					<p class="tac">写真を選択</p>
+					<div onClick="$('#file').click()">    
+							<label class="tac outer">
+									<div id="img_field" >
+											<% if @post.img? %>
+													<p><%= @post.img.url %></p>
+													<%= image_tag(@post.img.url) %>
+											<% else %>
+													<i class="fas fa-image"></i><i class="fas fa-file-upload add"></i>
+											<% end %>
+									</div>
+									<%= f.file_field :img, class: "image", style: "display:none;", id: "file" %>
+							</label>
+					</div>
+			</div>
+			<div class="field">
+				<%= f.text_area :text, placeholder: "コメント", class: "comment_form" %>
+			</div>
 
-
-        <div class="actions">
-            <%= f.submit "投降" %>
-        </div>
+			<div class="actions">
+					<%= f.submit "投降" %>
+      </div>
     <% end %>
 </div>
 
