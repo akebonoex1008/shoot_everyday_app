@@ -256,12 +256,12 @@ footer {
   margin-top: 10px;
   width: 100%;
 
-  ul {
+  .posts-list-ul {
     list-style: none;
     max-width: 1000px;
     margin: 0 auto;
    
-    li {
+    .posts-list-li {
       float: left;
       max-width: 220px;
       width: 220px;
@@ -320,21 +320,21 @@ footer {
 }
 
 .user-profile {
-    margin: 0 auto;
-    padding-bottom: 30px;
-    border-radius: 20px;
-    background-color: #d9f1f1;
-    width: 100%;
-    max-width: 900px;
+  margin: 0 auto;
+  padding-bottom: 30px;
+  border-radius: 20px;
+  background-color: #d9f1f1;
+  width: 100%;
+  max-width: 900px;
 
-    a {
-      margin-left:20px; 
-    }
+  a {
+    margin-left:20px; 
+  }
 
-    p {
-      margin: 0 20px;
-      font-size: 20px;
-    }
+  p {
+    margin: 0 20px;
+    font-size: 20px;
+  }
 }
 
 .user-img {
@@ -347,6 +347,7 @@ footer {
     border-radius: 50%;
   }
 }
+
 
 /***********************************/
 /**** 　　　　js用　css            ***/
@@ -446,16 +447,39 @@ footer {
       }
 
       img{
-        padding-bottom: 10px;
+        padding-bottom: 3px;
       }
     }
 
     .reader-of-ui{
       width: 100%;
-      // padding-top: 7px;
-      
-      .icon_ui{
-        margin-bottom: 7px;
+      .post-ui-icon{
+        font-size: 40px;
+        
+        a {
+          color: gray;
+          cursor: pointer;
+        }
+
+        .post-like-icon{
+          float:left;
+          .like{
+            color:gray;
+          }
+
+          .unlike{
+            color: red;
+          }
+        }
+
+        .post-comment-icon{
+          padding-left: 7px;
+          float: left;
+        }
+
+        .post-delete-icon{
+          float: right;
+        }
       }
 
       .post-user-profile{
@@ -484,27 +508,105 @@ footer {
             padding-top: 3px;
             padding-left: 15px;
             p{
-              // padding-top: 3px;
               font-size: 5px;
             }
-          }
-
-          .post-user-follow-form{
-            text-align: center;
-            vertical-align: middle;
-            width: 20%;
           }
         }
       }
 
+      //　コメント機能
       .post__comment__ui{
+
         padding-top: 7px;
         border-top: 1px solid $gray-medium-light;
-      }
+        
+        .comment-form {
+          width: 100%;
+          margin-bottom: 7px;
+
+          table{
+            .input-comment{
+              padding-left: 20px;
+              .comment-textarea{
+                border: none;
+                border-bottom: 1px solid $gray-medium-light;
+                width: 350px;
+                height: 30px;
+                resize: none;
+                &:focus {
+                  border-bottom: 1px solid black;
+                  outline: none;
+                }
+              }
+            }
+        
+            .post_comment_btn{
+              input[type='submit']{
+                width: 50px;
+                height: 30px;
+                color: white;
+                background-color: rgb(1, 146, 146);
+                border-radius: 20px;
+                border: none;
+              }
+            }
+          }
+        }//comment-form
+
+        .comment-list {
+          width: 100%;
+          padding-top: 7px;
+          border-top: double 2px $gray-medium-light;
+
+          ul{
+            padding: 0;
+            list-style: none;
+            width: 100%;
+
+            .comment-user{
+              width: 100%;
+              height: auto;
+              border-top: 1px solid $gray-medium-light;
+              padding-top: 10px;
+
+              .name {
+                padding: 7px 0 0 7px;
+              }
+
+              .content {
+                padding: 7px 0 0 12px;
+              }
+
+              .comment-dalete-icon{
+                padding-top: 14px;
+                font-size: 14px;
+                a {
+                  color: gray;
+                  cursor: pointer;
+                }
+                i {
+                  padding-left: 15px;
+                }
+              }
+            }
+          }
+        }//comment-list
+
+        .comment-user-img{
+          text-align: center;
+          vertical-align: top;
+          
+          img{
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+          }
+        }//comment-user-img
+      }// post__comment__ui
     }// reader-of-ui
   }// modal__content
 }
-
 
 
 

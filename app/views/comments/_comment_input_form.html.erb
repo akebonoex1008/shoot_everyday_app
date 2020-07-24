@@ -1,0 +1,24 @@
+<%= form_for(post.comments.build, remote: true) do |f| %>
+	<div><%= hidden_field_tag :post_id, post.id %></div>
+	<div class="comment-form">
+		<table>
+			<tr>
+				<td class="comment-user-img">
+					<%= image_tag current_user.profile_image.url %>
+				</td>
+				<td class="input-comment">
+					<div class="field">
+						<%= f.text_area :content, placeholder: "comment...", class: "comment-textarea" %>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td align="right" colspan="2" class="post_comment_btn">
+					<div class="actions">
+						<%= f.submit "投降" %>
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+<% end %>

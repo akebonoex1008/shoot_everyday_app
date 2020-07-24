@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy
+    @post = Post.find(params[:id]).destroy
     redirect_to request.referrer || root_url
   end
 
