@@ -1,0 +1,50 @@
+<div id="modal-<%= post.id %>" class="modal js-modal">
+	<div class="modal__bg js-modal-close"></div>
+	<div class="modal__content">
+	<%# モーダルウィンドウの内容 %>
+		<div class="image__content">
+			<h2><%= post.title %></h2>
+			<%= image_tag post.img.url %>
+		</div>
+		<div class="reader-of-ui">
+			<div class="post-ui-icon">
+				<div class="post-like-icon">
+					<%= render 'likes/like_form', post: post %>
+				</div>
+				<div class="post-comment-icon">
+					<i class="far fa-comment"></i>
+				</div>
+				<% if current_user?(post.user) %>
+					<%= link_to( post, method: :delete, data: { confirm: "本当に削除しますか？" }) do %>
+						<div class="post-delete-icon">
+							<i class="fas fa-trash"></i>
+						</div>
+					<% end %>
+				<% end %>
+			</div>
+			<div class="clear"></div>
+			<div class="post-user-profile">
+				<table>
+					<tr>
+						<td class="post-user-profile-img">
+							<%= image_tag post.user.profile_image.url %>
+						</td>
+						<td class="post-user-name-and-follower">
+							<h4><%= post.user.name %></h4>
+							<p>
+								<strong class="followers">
+									<%= post.user.followers.count %>
+								</strong>
+								フォロワー
+							</p>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="clear"></div>
+			<div class="post__comment__ui">
+				<%= render 'comments/comment_form', post: post %>
+			</div>
+		</div>
+	</div>
+</div>

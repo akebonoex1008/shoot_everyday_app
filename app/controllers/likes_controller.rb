@@ -3,7 +3,7 @@ class LikesController < ApplicationController
 		@post = Post.find(params[:post_id])
 		@post.like(current_user)
 		respond_to do |format|
-      format.html { redirect_to @post.user }
+      format.html { redirect_to request.referrer || root_url }
       format.js
     end
   end
@@ -12,7 +12,7 @@ class LikesController < ApplicationController
 		@post = Like.find(params[:id]).post
 		@post.unlike(current_user)
 		respond_to do |format|
-      format.html { redirect_to @post.user }
+      format.html { redirect_to request.referrer || root_url }
       format.js
     end
   end

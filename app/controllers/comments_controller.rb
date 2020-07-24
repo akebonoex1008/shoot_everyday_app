@@ -4,16 +4,24 @@ class CommentsController < ApplicationController
     
     if @comment.save
       flash[:success] = "投降に成功しました"
-      redirect_to @comment.post.user
+      @post = @comment.post
+      respond_to do |format|
+        format.html { redirect_to request.referrer || root_url }
+        format.js
+      end
     else
       flash[:success] = "投降に失敗"
-      redirect_to @comment.post.user
+      redirect_to request.referrer || root_url
     end
   end
 
   def destroy
-  end
-
-  def edit
+    @comment = Comment.find(params[:id])
+    @post = @comment.post
+    @comment.destroy
+    respond_to do |format|
+      format.html { redirect_to request.referrer || root_url }
+      format.js
+    end
   end
 end
