@@ -37,4 +37,11 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
+
+  # 簡単ログイン
+  def self.easy_login(user_email)
+    find_or_create_by!(email: user_email ) do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
 end
