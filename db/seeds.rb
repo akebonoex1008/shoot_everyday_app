@@ -1,10 +1,20 @@
 User.create!(
   name: "Test Tester",
-  email: "test-1@example.com",
+  email: "tester-1@example.com",
   password:              "foobar",
   password_confirmation: "foobar",
   profile_image: open("#{Rails.root}/db/sample/profile/profile-3.jpg")
 )
+
+# 簡単ログイン（ゲスト）
+User.create!(
+  name: "ゲスト",
+  email: "guest-1@example.com",
+  password:              "foobar",
+  password_confirmation: "foobar",
+  profile_image: open("#{Rails.root}/db/sample/profile/profile-2.jpg")
+)
+
 
 # users
 99.times do |n|

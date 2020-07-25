@@ -6,6 +6,11 @@ Rails.application.routes.draw do
     :registrations => "users/registrations",
     :passwords     => "users/passwords"
   }
+  # 簡単ログイン
+  devise_scope :user do
+    post 'users/guest_sign_in',  to: 'users/sessions#guest_login'
+    post 'users/tester_sign_in', to: 'users/sessions#tester_login'
+  end
 
   resources :users, :only => [:index, :show] do
     member do
