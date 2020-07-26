@@ -1,0 +1,30 @@
+<%= form_for(comment, remote: true) do |f| %>
+	<table class="edit-comment">
+		<tr>
+			<td rowspan="3" class="comment-user-img">
+				<%= image_tag comment.user.profile_image.url %>
+			</td>
+			<td class="name">
+				<%= comment.user.name %>
+			</td>
+		</tr>
+		<tr>
+			<td class="content">
+				<div class="field">
+					<%= f.text_area :content, placeholder: "comment...", id: "edit-comment-textarea-#{comment.id}",
+																														class: "edit-comment-textarea" %>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td align="right" class="update-or-cancel-btn">
+				<div class="actions comment-cancel-btn">
+					<%= f.submit "キャンセル", name: 'cancel' %>
+				</div>
+				<div class="actions comment-update-btn">
+					<%= f.submit "更新", name: 'update' %>
+				</div>
+			</td>
+		</tr>
+	</table>
+<% end %>
