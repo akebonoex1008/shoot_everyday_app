@@ -27,5 +27,4 @@ $(function(){
 		$('.comment-textarea').focus();
 		return false;
 	});
-
 });

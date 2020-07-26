@@ -1,0 +1,18 @@
+$("#comment-<%= @comment.post.id %>").html("<%= escape_javascript(render "comments/comment_form", post: @comment.post) %>");
+$("#comment-user-<%= @comment.id %>").html("<%= escape_javascript(render "comments/edit_comment", comment: @comment) %>");
+var t = document.getElementById("edit-comment-textarea-<%= @comment.id %>");
+var len = t.value.length;
+t.focus();
+t.setSelectionRange(len, len);
+<%# 改行によって編集用textareaを大きく %>
+t.style.height = "10px";
+t.style.lineHeight = "19px";
+var wSclollHeight = parseInt(t.scrollHeight);
+var wLineH = parseInt(t.style.lineHeight.replace(/px/, ''));
+if(wSclollHeight < (wLineH * 2)){wSclollHeight=(wLineH * 2);}
+t.style.height = wSclollHeight + "px";
+<%# var lineHeight = t.css('line-height');
+lineHeight = lineHeight.replace(/[^-\d\.]/g, '');
+t.css({
+	height: lineHeight * 5 + 'px'
+}); %>

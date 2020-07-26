@@ -1,0 +1,27 @@
+<table class="display-comment">
+	<tr>
+		<td rowspan="3" class="comment-user-img">
+			<%= image_tag comment.user.profile_image.url %>
+		</td>
+		<td class="name">
+			<%= comment.user.name %>
+		</td>
+	</tr>
+	<tr>
+		<td class="content">
+			<%= safe_join(comment.content.split("\n"),tag(:br)) %>
+		</td>
+	</tr>
+	<% if current_user?(comment.user) %>
+		<tr>
+			<td class="comment-edit-or-dalete-icon">
+				<%= link_to(edit_comment_path(comment), remote: true) do %>
+					<i class="fas fa-edit"></i>
+				<% end %>
+				<%= link_to(comment, method: :delete, data: { confirm: "コメントを削除しますか？" }, remote: true) do %>
+					<i class="fas fa-trash"></i>
+				<% end %>
+			</td>
+		</tr>
+	<% end %>
+</table>

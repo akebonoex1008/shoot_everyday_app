@@ -4,30 +4,9 @@
 		<ul>
 			<% @comments.each do |comment| %>
 				<li class="comment-user">
-					<table>
-						<tr>
-							<td rowspan="3" class="comment-user-img">
-								<%= image_tag comment.user.profile_image.url %>
-							</td>
-							<td class="name">
-								<%= comment.user.name %>
-							</td>
-						</tr>
-						<tr>
-							<td class="content">
-								<%= safe_join(comment.content.split("\n"),tag(:br)) %>
-							</td>
-						</tr>
-						<% if current_user?(comment.user) %>
-							<tr>
-								<td class="comment-dalete-icon">
-									<%= link_to(comment, method: :delete, data: { confirm: "コメントを削除しますか？" }, remote: true) do %>
-										<i class="fas fa-trash"></i>
-									<% end %>
-								</td>
-							</tr>
-						<% end %>
-					</table>
+					<div id="comment-user-<%= comment.id %>">
+						<%= render 'comments/display_comment', comment: comment %>
+					</div>
 				</li>
 			<% end %>
 		</ul>
