@@ -15,11 +15,11 @@
 					<i class="far fa-comment"></i>
 				</div>
 				<% if current_user?(post.user) %>
-					<%= link_to( post, method: :delete, data: { confirm: "本当に削除しますか？" }) do %>
-						<div class="post-delete-icon">
+					<div class="post-delete-icon">
+						<%= link_to( post, method: :delete, data: { confirm: "本当に削除しますか？" }) do %>					
 							<i class="fas fa-trash"></i>
-						</div>
-					<% end %>
+						<% end %>
+					</div>
 				<% end %>
 			</div>
 			<div class="clear"></div>
