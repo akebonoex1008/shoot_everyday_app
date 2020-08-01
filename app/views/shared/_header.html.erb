@@ -1,24 +1,27 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
+<header>
+  <div id="title">
     <%= link_to "Shoot everyday", "#", id: "logo" %>
-    <nav>
-      <% if user_signed_in? %>
-        <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to current_user.name, user_path(current_user.id) %></li>
-          <li><%= link_to 'ユーザー一覧', users_path %></li>
-          <li><%= link_to '投稿一覧', posts_path %></li>
+  </div>
+  <% if user_signed_in? %>
+    <ul class="dropdwn">
+      <li class="user-menu-img">
+        <%= image_tag current_user.profile_image.url %><i class="fas fa-angle-down"></i>
+        <ul class="dropdwn_menu">
+          <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
           <li><%= link_to '投稿', new_post_path %></li>
           <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
-          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, id: "logout-menu" %></li>
         </ul>
-      <% else %>
-        <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to 'サインアップ', new_user_registration_path %></li>
-          <li><%= link_to 'ログイン', new_user_session_path %></li>
-          <li><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %></li>
-          <li><%= link_to 'テスターログイン', users_tester_sign_in_path, method: :post %></li>
-        </ul>
-      <% end %>
-    </nav>
-  </div>
+      </li>
+      <li><%= link_to 'ユーザー一覧', users_path %></li>
+      <li><%= link_to '全ての投稿', posts_path %></li>
+    </ul>
+  <% else %>
+    <ul class="dropdwn">
+      <li><%= link_to 'サインアップ', new_user_registration_path %></li>
+      <li><%= link_to 'ログイン', new_user_session_path %></li>
+      <li><%= link_to '簡単ログイン', users_guest_sign_in_path, method: :post %></li>
+      <li><%= link_to 'テスターログイン', users_tester_sign_in_path, method: :post %></li>
+    </ul>
+  <% end %>
 </header>

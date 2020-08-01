@@ -27,10 +27,14 @@
 				<table>
 					<tr>
 						<td class="post-user-profile-img">
-							<%= image_tag post.user.profile_image.url %>
+							<%= link_to user_path(post.user.id) do %>
+								<%= image_tag post.user.profile_image.url %>
+							<% end %>
 						</td>
 						<td class="post-user-name-and-follower">
-							<h4><%= post.user.name %></h4>
+							<%= link_to user_path(post.user.id) do %>
+								<h4><%= post.user.name %></h4>
+							<% end %>
 							<p>
 								<strong class="followers">
 									<%= post.user.followers.count %>
