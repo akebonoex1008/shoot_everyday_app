@@ -8,11 +8,11 @@
         <%= image_tag current_user.profile_image.url %><i class="fas fa-angle-down"></i>
         <ul class="dropdwn_menu">
           <li><%= link_to 'マイページ', user_path(current_user.id) %></li>
-          <li><%= link_to '投稿', new_post_path %></li>
           <li><%= link_to 'プロフィール変更', edit_user_registration_path %></li>
           <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, id: "logout-menu" %></li>
         </ul>
       </li>
+      <li class="new-post"><%= link_to '投稿', new_post_path %></li>
       <li><%= link_to 'ユーザー一覧', users_path %></li>
       <li><%= link_to '全ての投稿', posts_path %></li>
     </ul>

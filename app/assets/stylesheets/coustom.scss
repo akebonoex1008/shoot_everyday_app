@@ -114,6 +114,9 @@ header {
     cursor: pointer;
   }
 
+  .new-post{
+    max-width: 50px;
+  }
   .dropdwn{
     float: right;
     max-width: 100%;
@@ -427,6 +430,31 @@ footer {
     margin: 0 20px;
     font-size: 20px;
   }
+
+  .div-btn{
+    margin: 0 auto;
+    width: 110px;
+    height: 30px;
+    border-radius: 10px;
+    p {
+      text-align: center;
+      font-size: 0.9em;
+      padding-top: 4px;
+    }
+    &:hover {
+      cursor: pointer;
+      opacity: 0.7;
+    }
+  }
+
+  .follow-btn{
+    color: white;
+    background-color: rgb(9, 116, 240);
+  }
+  .unfollow-btn{
+    color: black;
+    background-color: $gray-medium-light;
+  }
 }
 
 .user-img {
@@ -576,13 +604,14 @@ footer {
       .post-ui-icon{
         font-size: 40px;
         
-        a {
-          color: gray;
-          cursor: pointer;
-        }
+        
 
         .post-like-icon{
           float:left;
+          label {
+            cursor: pointer;
+          }
+
           .like{
             color:gray;
           }
@@ -595,10 +624,17 @@ footer {
         .post-comment-icon{
           padding-left: 7px;
           float: left;
+          cursor: pointer;
         }
 
         .post-delete-icon{
           float: right;
+          a {
+            color: gray;
+            &:hover {
+              color: red;
+            }
+          }
         }
       }
 
