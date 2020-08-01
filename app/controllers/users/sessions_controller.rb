@@ -14,10 +14,11 @@ class Users::SessionsController < Devise::SessionsController
     sign_in user
     redirect_to root_path, notice: 'テストユーザーとしてログインしました。'
   end
-  # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+  
+  def new
+    session.delete('devise.omniauth_data')
+    super
+  end
 
   # POST /resource/sign_in
   # def create

@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :correct_user,   only: :destroy
 
   def index
-    @posts = Post.all.page(params[:page]).per(24)
+    @posts = Post.all.order(created_at: "DESC").page(params[:page]).per(24)
   end
 
   def new

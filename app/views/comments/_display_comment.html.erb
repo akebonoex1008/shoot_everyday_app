@@ -1,15 +1,20 @@
 <table class="display-comment">
 	<tr>
 		<td rowspan="3" class="comment-user-img">
-			<%= image_tag comment.user.profile_image.url %>
+			<%= link_to user_path(comment.user.id) do %>
+				<%= image_tag comment.user.profile_image.url %>
+			<% end %>
 		</td>
 		<td class="name">
-			<%= comment.user.name %>
+			<%= link_to user_path(comment.user.id) do %>
+				<%= comment.user.name %>
+			<% end %>
 		</td>
 	</tr>
 	<tr>
 		<td class="content">
 			<%= safe_join(comment.content.split("\n"),tag(:br)) %>
+			<%# simple_format(comment.content) %>
 		</td>
 	</tr>
 	<% if current_user?(comment.user) %>

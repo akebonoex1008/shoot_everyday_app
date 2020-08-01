@@ -2,7 +2,8 @@ class User < ApplicationRecord
   mount_uploader :profile_image, ImgUploader
   before_save{ email.downcase! }
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: [:twitter]
   validates :name, presence: true
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
@@ -44,4 +45,29 @@ class User < ApplicationRecord
       user.password = SecureRandom.urlsafe_base64
     end
   end
+
+  # api　ログイン用
+  def self.find_for_oauth(auth)
+    user = User.where(uid: auth.uid, provider: auth.provider).first
+
+    unless user
+      user = User.create(
+        uid:      auth.uid,
+        provider: auth.provider,
+        name:     auth['info']['name'] ,
+        email:    User.dummy_email(auth),
+        password: Devise.friendly_token[0, 20]
+      )
+    end
+
+    user
+  end
+ 
+  private
+ 
+    # ダミーのアドレスを用意
+    def self.dummy_email(auth)
+      "#{auth.uid}-#{auth.provider}@example.com"
+    end
+
 end
