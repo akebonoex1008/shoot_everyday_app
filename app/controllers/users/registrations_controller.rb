@@ -1,5 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :authenticate_user!, only: %i[edit update destroy]
   before_action :check_guest, only: %i[update destroy]
 
   # 簡単ログインのユーザーは削除不可

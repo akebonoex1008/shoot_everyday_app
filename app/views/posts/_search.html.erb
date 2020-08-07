@@ -1,0 +1,9 @@
+<div class="search">
+  <%= search_form_for @q, class: "search-form" do |f| %>
+    <%= f.search_field :title_cont, class: "search-form-user" %>
+    <label class="sbtn">
+      <%= f.submit style: "display: none;" %>
+      <i class="fa fa-search"></i>
+    </label>
+  <% end %>
+</div>

@@ -13,11 +13,13 @@ Rails.application.routes.draw do
     post 'users/tester_sign_in', to: 'users/sessions#tester_login'
   end
 
-  resources :users, :only => [:index, :show] do
+  resources :users, only: [:index, :show] do
     member do
       get :following, :followers
     end
   end
+  get '/users/likes/', to: 'users#likes', as: 'user_likes_or_posts'
+
 
   resources :relationships, only: [:create, :destroy]
   resources :posts, only: [:index, :new, :create, :destroy]

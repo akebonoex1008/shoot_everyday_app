@@ -17,6 +17,18 @@
 		</strong>
 		フォロワー
 	</a>
+	<table id="tab-list">
+		<tr>
+			<td id="posts-tab">
+				<%= link_to '投稿一覧', user_path(@user) %>
+			</td>
+			<td class="tab-delimit-line">|</td>
+			<td id="likes-tab">
+				<%= link_to 'いいね一覧', user_path(@user, params: {likes: ""}) %>
+			</td>
+		</tr>
+	</table>
 </div>
+<h1><%= @list_title %></h1>
 <%= render 'posts/posts_list' %>
 <%= javascript_include_tag 'modal.js' %>
