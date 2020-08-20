@@ -3,7 +3,8 @@
 	<div class="modal__content">
 	<%# モーダルウィンドウの内容 %>
 		<div class="image__content">
-			<h2><%= post.title %></h2>
+			<%  post.title = "No title" if post.title.blank? %>
+			<h2><%= post.title? %></h2>
 			<%= image_tag post.img.url %>
 		</div>
 		<div class="reader-of-ui">
@@ -48,7 +49,7 @@
 			<div class="clear"></div>
 			<%# 投稿者のコメント %>
 			<div class="post-user-comment">
-				<%= safe_join(post.text.split("\n"),tag(:br)) %>
+				<%= safe_join(post.comment?.split("\n"),tag(:br)) %>
 			</div>
 			<%# コメント機能 %>
 			<div class="post__comment__ui">
