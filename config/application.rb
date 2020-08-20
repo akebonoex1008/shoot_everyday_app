@@ -24,5 +24,13 @@ module Myapp
     # デフォルトのlocaleを日本語(:ja)にする
     config.i18n.default_locale = :ja
     #　#　以下の記述を追記する
+    config.generators do |g|
+      g.test_framework :rspec,
+        view_specs: false,
+        helper_specs: false,
+        routing_specs: false,
+        request_specs: false,
+        controller_specs: false
+    end
   end
 end

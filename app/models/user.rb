@@ -21,6 +21,7 @@ class User < ApplicationRecord
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :like_posts, through: :likes, source: :post
   has_many :comments, dependent: :destroy
 
   # ユーザーをフォローする

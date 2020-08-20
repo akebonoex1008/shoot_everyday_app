@@ -1,0 +1,39 @@
+<div id="guest-home" class="background-image">
+  <ul class="guest-home-list">
+    <li>
+      <h1>SHOOT EVERYDAY</h1>
+    </li>
+    <li class="app-explanation">
+      写真が投稿できるサイトです。
+    </li>
+    <li class="home-basis-btn home-sign-up-btn">
+      <%= link_to(new_user_registration_path) do %>
+        新規登録
+      <% end %>
+    </li>
+    <li class="home-basis-btn home-login-btn">
+      <%= link_to(new_user_session_path) do %>
+        ログイン
+      <% end %>
+    </li>
+    <li class="home-basis-btn home-easy-login-btn">
+      <%= link_to(users_guest_sign_in_path, method: :post) do %>
+        簡単ログイン
+      <% end %>  
+    </li>
+    <li class="api-login-text">
+      ー　他のサイトのアカウントを使用する　ー
+    </li>
+    <li>
+      <ul class="api-login-list">
+        <li id="twitter">
+          <%= link_to user_twitter_omniauth_authorize_path do %>
+            <i class="fab fa-twitter">
+              Twitterでログイン
+            </i>
+          <% end %>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

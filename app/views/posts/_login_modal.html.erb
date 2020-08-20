@@ -1,0 +1,12 @@
+<div id="modal-<%= post.id %>" class="modal js-modal">
+  <div class="modal__bg js-modal-close"></div>
+  <div class="modal__content">
+    <div class="login-modal">
+      <h5><%= post.title %></h5>
+      <%= image_tag post.img.url %>
+      <h2>見るにはログインが必要です</h2>
+      <h1>↓</h1>
+      <%= link_to 'ログインへ', new_user_session_path %>
+    </div>
+  </div>
+</div>
