@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::PasswordsController < Devise::PasswordsController
+  before_action :authenticate_user!, only: %i[create]
   before_action :check_guest, only: :create
 
   def check_guest

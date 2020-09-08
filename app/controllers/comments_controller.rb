@@ -1,16 +1,18 @@
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     @comment = current_user.comments.build(content: params[:comment][:content], post_id: params[:post_id])
     
     if @comment.save
-      flash[:success] = "投降に成功しました"
+      # flash[:success] = "投降に成功しました"
       @post = @comment.post
       respond_to do |format|
         format.html { redirect_to request.referrer || root_url }
         format.js
       end
     else
-      flash[:success] = "投降に失敗"
+      # flash[:success] = "投降に失敗"
       redirect_to request.referrer || root_url
     end
   end
@@ -37,6 +39,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
 
     if !params[:update] && !params[:cancel]
+      flash[:alert] = "comment update error"
       redirect_to request.referrer
     elsif params[:update]
       @comment.update(comment_params)
@@ -46,7 +49,6 @@ class CommentsController < ApplicationController
       format.html { redirect_to request.referrer || root_url }
       format.js
     end
-
   end
 
   private

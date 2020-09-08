@@ -1,24 +1,26 @@
-<% provide(:title, @title) %>
-<h1><%= @show_title %></h1>
+<%= render 'users/search' if @q %> 
+<h1><%= user_list_title %></h1>
 <div class="index-users"> 
-    <ul>
-        <% @users.each do |user| %>
-            <li>                
-                <div class="pl-20">
-                    <%= image_tag user.profile_image.url, class: "index-user-img" %>
-                </div>
-                <div class="ml-20">
-                    <p class="user-name"><%= link_to user.name, user %></p>
-                </div>
-                <div class="f-r">
-                    <% posts = user.posts.order(created_at: "DESC").limit(3) %>
-                    <% posts.each do |post| %>
-                        <%= image_tag post.img.url, class: "post-img" %>
-                    <% end %>
-                <div>
-            </li>
-        <% end %>
-    </ul>
+	<ul>
+		<% @users.each do |user| %>
+			<li>                
+				<div class="pl-20">
+					<%= image_tag user.profile_image.url, class: "index-user-img" %>
+				</div>
+				<div class="ml-20">
+					<p class="user-name"><%= link_to user.name, user %></p>
+				</div>
+				<% if user.posts.present? %>
+					<div class="f-r">
+						<% posts = user.posts.order(created_at: "DESC").limit(3) %>
+						<% posts.each do |post| %>
+							<%= image_tag post.img.url, class: "post-img" %>
+						<% end %>
+					<div>
+				<% end %>
+			</li>
+		<% end %>
+	</ul>
 </div>
 <div class="clear"></div>
 <div class="tac">

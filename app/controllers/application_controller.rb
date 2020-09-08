@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
   protect_from_forgery with: :exception
 
   # 簡単ログイン用定数
@@ -22,4 +21,7 @@ class ApplicationController < ActionController::Base
     current_user
   end
 
+  def current_user?(user)
+    user == current_user
+  end
 end

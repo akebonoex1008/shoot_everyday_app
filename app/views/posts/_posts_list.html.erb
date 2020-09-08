@@ -15,7 +15,11 @@
 						</a>
 					</li>
 					<%# モーダルウィンドウ %>
-					<%= render 'posts/post_modal', post: post %>
+					<% if user_signed_in? %>
+						<%= render 'posts/post_modal', post: post %>
+					<% else %>
+						<%= render 'posts/login_modal', post: post %>
+					<% end %>
 				<% end %>
 			<% end %>
 		</ul>
