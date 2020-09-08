@@ -1,16 +1,20 @@
 FROM ruby:2.6.3
+RUN apt-get update -qq &&  \
+    apt-get install --no-install-recommends -y nodejs postgresql-client && \
+    apt-get install -y vim
 
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
+ENV APP_DIR /app
 
-ENV APP_ROOT /myapp
-RUN mkdir $APP_ROOT
-WORKDIR $APP_ROOT
-
-ADD Gemfile $APP_ROOT/Gemfile
-ADD Gemfile.lock $APP_ROOT/Gemfile.lock
-
+RUN mkdir /app
+WORKDIR $APP_DIR
+COPY Gemfile /app/Gemfile
+COPY Gemfile.lock /app/Gemfile.lock
 RUN bundle install
+COPY . /app
+RUN mkdir -p tmp/sockets
 
 EXPOSE 3000
 
-COPY . $APP_ROOT
+# Start the main process.
+CMD ["rails", "server", "-b", "0.0.0.0"]
+

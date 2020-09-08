@@ -14,7 +14,6 @@
 	<tr>
 		<td class="content">
 			<%= safe_join(comment.content.split("\n"),tag(:br)) %>
-			<%# simple_format(comment.content) %>
 		</td>
 	</tr>
 	<% if current_user?(comment.user) %>

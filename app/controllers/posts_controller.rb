@@ -1,9 +1,10 @@
 class PostsController < ApplicationController
-
+  before_action :authenticate_user!, only: %i[new create destroy]
   before_action :correct_user,   only: :destroy
 
   def index
-    @posts = Post.all.order(created_at: "DESC").page(params[:page]).per(24)
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true).order(created_at: "DESC").page(params[:page]).per(24)
   end
 
   def new
@@ -13,7 +14,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      flash[:success] = "投降に成功しました"
+      flash[:notice] = "投降に成功しました"
       redirect_to current_user
     else
       render :new
@@ -22,6 +23,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id]).destroy
+    flash[:notice] = "投稿を削除しました"
     redirect_to request.referrer || root_url
   end
 
@@ -33,6 +35,9 @@ class PostsController < ApplicationController
 
     def correct_user
       @post = current_user.posts.find_by(id: params[:id])
-      redirect_to root_url if @post.nil?
+      if @post.nil?
+        flash[:alert] = "自分の投稿ではないため実行できません。"
+        redirect_to root_url 
+      end
     end
 end

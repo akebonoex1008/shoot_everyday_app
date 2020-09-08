@@ -1,24 +1,34 @@
 version: '3'
 services:
   db:
-    image: postgres
+    image: postgres:12
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
-    environment:
-      TZ: Asia/Tokyo
-      POSTGRES_PASSWORD: password
-
-  web:
+  app:
     build: .
+    # command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bundle exec puma -C config/puma.rb 
     volumes:
-      - .:/myapp
+      - .:/app
+      - sockets:/app/tmp/sockets
     ports:
       - "3000:3000"
-    tty: true
     depends_on:
       - db
-    working_dir: "/myapp"
-    command: /bin/sh -c "rm -f tmp/pids/server.pid && rails s -p 3000 -b '0.0.0.0'"
-
+  nignx:
+    build:
+      context: docker/nginx
+    volumes:
+      - ./nginx/log:/var/log/nginx
+      - sockets:/app/tmp/sockets
+      # - ./mysite.template:/etc/nginx/conf.d/mysite.template
     environment:
-      TZ: Asia/Tokyo
+      - NGINX_SERVER_NAME=localhost
+    depends_on:
+      - app
+    ports:
+      - 80:80
+volumes:
+  sockets:
+  postgresql-data:
+    driver: local

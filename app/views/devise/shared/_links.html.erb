@@ -23,11 +23,9 @@
     <%- resource_class.omniauth_providers.each do |provider| %>
       <li id="<%= provider %>">
         <%= link_to  omniauth_authorize_path(resource_name, provider) do %>
-          <div class="<%= provider %>">
-            <i class="fab fa-<%= provider %>">
-              <%= OmniAuth::Utils.camelize(provider) %>でログイン
-            </i>
-          </div>
+          <i class="fab fa-<%= provider %>">
+            <%= OmniAuth::Utils.camelize(provider) %>でログイン
+          </i>
         <% end %>
       </li>
     <% end %>
