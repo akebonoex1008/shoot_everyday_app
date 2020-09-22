@@ -78,3 +78,4 @@ gem 'jquery-turbolinks'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'dotenv-rails'
+gem "omniauth-rails_csrf_protection"

@@ -1,34 +1,37 @@
-version: '3'
+version: '2'
 services:
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/rails/Dockerfile
+    command: bundle exec puma -C config/puma.rb 
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/app
+      - /var/tmp
+      # socketファイルの共有
+      - sockets:/app/tmp/sockets
+    tty: true
+    depends_on:
+      - db
   db:
     image: postgres:12
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
-  app:
-    build: .
-    # command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
-    command: bundle exec puma -C config/puma.rb 
-    volumes:
-      - .:/app
-      - sockets:/app/tmp/sockets
-    ports:
-      - "3000:3000"
-    depends_on:
-      - db
-  nignx:
-    build:
-      context: docker/nginx
-    volumes:
-      - ./nginx/log:/var/log/nginx
-      - sockets:/app/tmp/sockets
-      # - ./mysite.template:/etc/nginx/conf.d/mysite.template
     environment:
-      - NGINX_SERVER_NAME=localhost
-    depends_on:
-      - app
+      POSTGRES_PASSWORD: 'password'
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
     ports:
-      - 80:80
+      - '80:80'
+      #socketファイルの共有
+    volumes: 
+      - sockets:/app/tmp/sockets
+    depends_on: 
+      - app
+
 volumes:
   sockets:
-  postgresql-data:
-    driver: local

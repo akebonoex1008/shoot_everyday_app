@@ -22,7 +22,7 @@
   <ul class="api-login-list">
     <%- resource_class.omniauth_providers.each do |provider| %>
       <li id="<%= provider %>">
-        <%= link_to  omniauth_authorize_path(resource_name, provider) do %>
+        <%= link_to  omniauth_authorize_path(resource_name, provider), method: :post do %>
           <i class="fab fa-<%= provider %>">
             <%= OmniAuth::Utils.camelize(provider) %>でログイン
           </i>
