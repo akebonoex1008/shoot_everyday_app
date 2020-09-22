@@ -2,6 +2,9 @@
 写真を、投稿できるサービスです。
 ポートフォリオとして作成しました。
 
+<img width="841" alt="protfolio-image" src="https://user-images.githubusercontent.com/42577937/93860674-65e8ca80-fcfa-11ea-8ed1-0edfd02e7ad5.png">
+
+
 # リンク
 http://my-portfolio-test.com/<br>
 ログインページの下部の、簡単ログインボタンから、サンプルユーザーとしてログインできます。
