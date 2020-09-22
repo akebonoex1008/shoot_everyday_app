@@ -28,6 +28,7 @@ http://my-portfolio-test.com/<br>
 
 # クラウドアーキテクチャ
 
+![ecs](https://user-images.githubusercontent.com/42577937/93860793-8f095b00-fcfa-11ea-9764-7a466c3f9e5b.png)
 
 
 # 機能一覧、使用したgemなど
