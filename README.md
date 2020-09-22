@@ -45,10 +45,10 @@ http://my-portfolio-test.com/<br>
 - RSpec
 
 # 実装したい機能
-CircleCIによるCI/CD（現在実装中）
-Githubをproduction用とdevelopment用に分ける
-terraformでのAWSのコード化
+- CircleCIによるCI/CD（現在実装中）
+- Githubをproduction用とdevelopment用に分ける
+- terraformでのAWSのコード化
 
 # 興味があること、勉強したいこと
-Go言語
-Goによるマイクロサービスの実装
+- Go言語
+- Goによるマイクロサービスの実装
