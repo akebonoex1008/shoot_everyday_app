@@ -17,18 +17,6 @@ http://my-portfolio-test.com/<br>
 - Docker
 - GitHub
 - Nginx + Puma
-- AWS
-  - ECS(EC2)
-  - ECR
-  - ELB(ALB)
-  - RDS
-  - S3
-  - Route53
-  - CloudWatch
-
-# クラウドアーキテクチャ
-
-![ecs](https://user-images.githubusercontent.com/42577937/93860793-8f095b00-fcfa-11ea-9764-7a466c3f9e5b.png)
 
 
 # 機能一覧、使用したgemなど
@@ -45,7 +33,6 @@ http://my-portfolio-test.com/<br>
 - RSpec
 
 # 実装したい機能
-- CircleCIによるCI/CD（現在実装中）
 - Githubをproduction用とdevelopment用に分ける
 - terraformでのAWSのコード化
 
