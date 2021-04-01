@@ -5,11 +5,6 @@
 <img width="841" alt="protfolio-image" src="https://user-images.githubusercontent.com/42577937/93860674-65e8ca80-fcfa-11ea-8ed1-0edfd02e7ad5.png">
 
 
-# リンク
-http://my-portfolio-test.com/<br>
-ログインページの下部の、簡単ログインボタンから、サンプルユーザーとしてログインできます。
-
-
 # 使用技術
 - Ruby 2.6.3
 - Ruby on Rails 5.1.7
